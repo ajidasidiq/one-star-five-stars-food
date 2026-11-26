@@ -10,6 +10,10 @@ import os
 
 ENTRY = "One star: your species pays for water, worships glowing rectangles, and queues for bitter bean juice \u2014 but the dumplings were so good I nearly defected and opened a stall."
 
+# Validation gate: the bounty takes one sentence of 1-200 characters.
+assert "\n" not in ENTRY and 1 <= len(ENTRY) <= 200, "entry must be one line of 1-200 chars"
+assert ENTRY.count(".") == 1 and ENTRY.endswith("."), "entry must be exactly one sentence"
+
 def main():
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
